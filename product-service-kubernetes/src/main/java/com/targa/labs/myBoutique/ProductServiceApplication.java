@@ -11,8 +11,8 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.targa.labs.myBoutique.product.security.domain.User;
-import com.targa.labs.myBoutique.product.security.repository.UserRepository;
+import com.targa.labs.myBoutique.product.domain.Category;
+import com.targa.labs.myBoutique.product.repository.CategoryRepository;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -21,10 +21,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 public class ProductServiceApplication implements CommandLineRunner{
 	
-	@Autowired
-	private UserRepository userRepository;
+
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProductServiceApplication.class, args);
@@ -33,20 +33,22 @@ public class ProductServiceApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-//		// Delete all
-//        this.userRepository.deleteAll();
-
-        // Crete users
-        User dan = new User("user",passwordEncoder.encode("user"),"USER","");
-        User admin = new User("admin",passwordEncoder.encode("admin123"),"ADMIN","ACCESS_TEST1,ACCESS_TEST2");
-        User manager = new User("manager",passwordEncoder.encode("manager123"),"MANAGER","ACCESS_TEST1");
-
-        List<User> users = Arrays.asList(dan,admin,manager);
-
-        // Save to db
-        System.out.println("Saving users To DB");
-        this.userRepository.saveAll(users);
-		
+        
+    	Category musiqueInstrument = new Category("Music Instrument", "music instrument");
+    	
+    	Category footBall = new Category("Football t-shirt", "Footbal t-shirt desc");
+    	
+    	Category pcVideoGames = new Category("PC Video Games", "Video games pc department");
+    	
+    	Category ps4VideoGames = new Category("PS4 Video Games", "Video games PS4 department");
+    	
+    	Category pcSoftware = new Category("Pc software", "Pc Software department");
+    	
+    	Category healthCare = new Category("Health Care", "Health Care department");
+    	
+       List<Category> categories = Arrays.asList(pcSoftware,healthCare,musiqueInstrument,footBall,pcVideoGames,ps4VideoGames);
+        
+       this.categoryRepository.saveAll(categories);
 	}
 
 }

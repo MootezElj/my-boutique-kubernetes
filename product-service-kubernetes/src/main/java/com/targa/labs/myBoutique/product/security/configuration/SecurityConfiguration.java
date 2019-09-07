@@ -18,10 +18,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.google.common.collect.ImmutableList;
-import com.targa.labs.myBoutique.product.security.JwtAuthenticationFilter;
 import com.targa.labs.myBoutique.product.security.JwtAuthorizationFilter;
-import com.targa.labs.myBoutique.product.security.repository.UserRepository;
 import com.targa.labs.myBoutique.product.security.service.UserPrincipalDetailsService;
 
 import lombok.AllArgsConstructor;
@@ -34,7 +31,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private UserPrincipalDetailsService UserPrincipalDetailsService;
 
-	private UserRepository userRepository;
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) {
 		auth.authenticationProvider(authenticationProvider());
@@ -50,8 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		cors()
 		.and()
 		//add JWT Filters (1.auth 2.Autorization)
-		.addFilter(new JwtAuthenticationFilter(authenticationManager()))
-		.addFilter(new JwtAuthorizationFilter(authenticationManager(),  this.userRepository))
+		.addFilter(new JwtAuthorizationFilter(authenticationManager()))
 		.authorizeRequests()
 
 		//login 

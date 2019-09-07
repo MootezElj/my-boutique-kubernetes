@@ -47,7 +47,7 @@ public class ProductService {
 						ProductStatus.valueOf(productDto.getStatus()),
 						productDto.getSalesCounter(),
 						null,
-						this.categoryRepository.findById(productDto.getCategory().getId())
+						this.categoryRepository.findById(productDto.getCategoryId())
 						.orElse(null)
 
 						)
@@ -70,7 +70,7 @@ public class ProductService {
 					product.getQuantity(),
 					product.getStatus().toString(),
 					product.getSalesCounter(),
-					CategoryService.mapToDto(product.getCategory()));
+					product.getCategory().getId());
 		}
 		return null;
 	}
