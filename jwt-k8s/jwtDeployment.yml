@@ -1,0 +1,23 @@
+#Order deployment (Working fine)
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jwt-service
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: jwt-service
+    spec:
+      containers:
+      - name: jwt-service
+        image: mootezelj/jwt-service:0.0.1-SNAPSHOT
+        ports:
+        - containerPort: 9995
+        env:
+        - name: SERVER_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: jwt-service
+              key: server.port
