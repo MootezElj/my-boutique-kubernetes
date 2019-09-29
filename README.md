@@ -147,7 +147,7 @@ mootezelj/order-service              0.0.1-SNAPSHOT      3db049743d0b        49 
 mootezelj/product-service            0.0.1-SNAPSHOT      94d6c88d27e7        49 years ago        189MB
 mootezelj/jwt-service                0.0.1-SNAPSHOT      b9d023f09ce0        49 years ago        167MB
 ```
-# 3. deploy to kubernetes:
+# 5. deploy to kubernetes:
 After building our micrservices images to the docker, we are ready to deploy those images to k8s.
 to do so, we will be using ms-k8s folders. Each folder has the basic configuration needed for each ms.
 
