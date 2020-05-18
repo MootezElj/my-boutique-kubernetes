@@ -5,12 +5,7 @@
 
 This guide will show you how to deploy My-boutique app with an authentication service to kubernete manually (without fabric8). By the end of this guide, you will be able to deploy **any** java application to k8s.
 
-My-boutique is an application developped follow
-
-
-
-
-g the book "Playing with Java Microservices on Kubernetes and OpenShift" writen by Nebrass Lamouchi, so all credit goes to him.
+My-boutique is an application developped following the book "Playing with Java Microservices on Kubernetes and OpenShift" writen by Nebrass Lamouchi, so all credits goes to him.
 In addition to the app from the book I added authorization in each microservice and created a microservice called jwt-service for authentication.
 
 The application you get represents a secured rest APIs of 3 major microservices (product-service, order-service and customer-service) each of this services will be deployed to k8s (kubernetes) using externalized configuration aka 'config-map' ( and of course with the jwt-service wich will be deployed to k9s as well) .
