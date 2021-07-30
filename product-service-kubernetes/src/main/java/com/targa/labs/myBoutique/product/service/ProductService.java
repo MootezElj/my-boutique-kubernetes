@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,8 +48,8 @@ public class ProductService {
 						productDto.getQuantity(),
 						ProductStatus.valueOf(productDto.getStatus()),
 						productDto.getSalesCounter(),
-						null,
-						this.categoryRepository.findById(productDto.getCategoryId())
+						new HashSet<>(),
+						this.categoryRepository.findById(productDto.getCategoryDto().getId())
 						.orElse(null)
 
 						)
@@ -70,7 +72,7 @@ public class ProductService {
 					product.getQuantity(),
 					product.getStatus().toString(),
 					product.getSalesCounter(),
-					product.getCategory().getId());
+					CategoryService.mapToDto(product.getCategory()));
 		}
 		return null;
 	}
