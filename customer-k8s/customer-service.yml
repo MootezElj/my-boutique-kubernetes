@@ -1,0 +1,17 @@
+#taken from customer-service-deployment.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-service
+spec:
+  selector:
+    app: customer-service
+  ports:
+    - protocol: TCP
+    # Port accessible inside cluster
+      port: 9992
+    # Port to forward inside the pod
+      targetPort: 9992
+    # Port accessible outside cluster
+      nodePort: 30005
+  type: LoadBalancer

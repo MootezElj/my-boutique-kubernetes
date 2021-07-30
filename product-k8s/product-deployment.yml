@@ -1,0 +1,23 @@
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: product-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+      - name: product-service
+        image: mootezelj/product-service:0.0.1-SNAPSHOT
+        ports:
+        - containerPort: 9991
+        env:
+        - name: SERVER_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: product-service
+              key: server.port
