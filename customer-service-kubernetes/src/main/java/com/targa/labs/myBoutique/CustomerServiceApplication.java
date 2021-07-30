@@ -48,7 +48,7 @@ public class CustomerServiceApplication implements CommandLineRunner{
 
         // Crete users
         User dan = new User("customer",passwordEncoder.encode("customer13"),"USER","ACCESS_TEST1,ACCESS_TEST2");
-        User admin = new User("customerAdmin",passwordEncoder.encode("admin123"),"ADMIN","ACCESS_TEST1,ACCESS_TEST2");
+        User admin = new User("admin",passwordEncoder.encode("admin123"),"ADMIN","ACCESS_TEST1,ACCESS_TEST2");
         User manager = new User("manager",passwordEncoder.encode("manager123"),"MANAGER","ACCESS_TEST1");
 
         Customer mootez = new Customer("Mootez", "Elj", "eljmootez@gmail.com", "51906322", Collections.emptySet());

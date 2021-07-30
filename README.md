@@ -3,15 +3,12 @@
 
 # My Boutique kubernetes
 
-This guide will show you how to deploy My-boutique app with an authentication service to kubernete manually (without fabric8). By the end of this guide, you will be able to deploy **any** java application to k8s.
+My-boutique is an application developped following the book "Playing with Java Microservices on Kubernetes and OpenShift" writen by Nebrass Lamouchi. <br>
 
-My-boutique is an application developped follow
-
-
-
-
-g the book "Playing with Java Microservices on Kubernetes and OpenShift" writen by Nebrass Lamouchi, so all credit goes to him.
 In addition to the app from the book I added authorization in each microservice and created a microservice called jwt-service for authentication.
+<br>
+There is also an open-source front-end angular application that I developped and that you can have a look at this [URL](https://github.com/MootezElj/my-boutique-angular). 
+This guide will show you how to deploy My-boutique app with an authentication service to kubernete manually (without fabric8). By the end of this guide, you will be able to deploy **any** java application to k8s.
 
 The application you get represents a secured rest APIs of 3 major microservices (product-service, order-service and customer-service) each of this services will be deployed to k8s (kubernetes) using externalized configuration aka 'config-map' ( and of course with the jwt-service wich will be deployed to k9s as well) .
 
@@ -147,7 +144,7 @@ mootezelj/order-service              0.0.1-SNAPSHOT      3db049743d0b        49 
 mootezelj/product-service            0.0.1-SNAPSHOT      94d6c88d27e7        49 years ago        189MB
 mootezelj/jwt-service                0.0.1-SNAPSHOT      b9d023f09ce0        49 years ago        167MB
 ```
-# 3. deploy to kubernetes:
+# 5. deploy to kubernetes:
 After building our micrservices images to the docker, we are ready to deploy those images to k8s.
 to do so, we will be using ms-k8s folders. Each folder has the basic configuration needed for each ms.
 
