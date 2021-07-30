@@ -15,7 +15,7 @@ import java.util.List;
 public class ProductResource {
 	private final ProductService productService;
 
-	@GetMapping
+	@GetMapping("/")
 	public List<ProductDto> findAll(){
 		return this.productService.findAll();
 	}
@@ -26,14 +26,14 @@ public class ProductResource {
 	}
 
 	@PostMapping("/")
-	public ProductDto create(ProductDto productDto) {
+	public ProductDto create(@RequestBody ProductDto productDto) {
 		return this.productService.create(productDto);
 	}
 
 
 	@DeleteMapping("/{id}/")
 	public void delete(@PathVariable Long id) {
-		this.productService.findById(id);
+		this.productService.delete(id);
 	}
 
 

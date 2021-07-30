@@ -32,4 +32,13 @@ public class Category extends AbstractEntity {
 	@OneToMany(mappedBy = "category")
 	@JsonIgnore
 	private Set<Product> products = new HashSet<>();
+
+	public Category(@NotNull String name, @NotNull String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+
+	
+	
 }

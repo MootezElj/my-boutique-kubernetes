@@ -1,6 +1,7 @@
 package com.targa.labs.myBoutique.product.security;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,18 +20,31 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+    	List<String> permissionsList = new ArrayList<>();
+    	List<String> rolesList= new ArrayList<>();
+    	
+    	if (this.user.getRoles().length()>0) {
+    		rolesList= Arrays.asList(this.user.getRoles().split(","));
+			
+		}
+    	
+		if (this.user.getPermissions().length()>0) {
+			permissionsList= Arrays.asList(this.user.getPermissions().split(","));
+		}
+
+    	
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         // Extract list of permissions (name)
-        if (this.user.getPermissionList().size()>0)
-        this.user.getPermissionList().forEach(p -> {
+        if (permissionsList.size()>0)
+        permissionsList.forEach(p -> {
             GrantedAuthority authority = new SimpleGrantedAuthority(p);
             authorities.add(authority);
         });
 
         // Extract list of roles (ROLE_name)
-        if (this.user.getRoleList().size()>0)
-        this.user.getRoleList().forEach(r -> {
+        if (rolesList.size()>0)
+        	rolesList.forEach(r -> {
             GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
             authorities.add(authority);
         });

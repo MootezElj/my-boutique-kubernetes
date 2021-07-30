@@ -43,7 +43,7 @@ public class Product extends AbstractEntity {
 	@Column(name = "status",nullable = false)
 	private ProductStatus status;
 	
-	@Column(name = "sales_counter")
+	@Column(name = "sales_counter",nullable = true)
 	private Integer salesCounter;
 	
 	@OneToMany
